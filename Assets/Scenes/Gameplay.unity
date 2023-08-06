@@ -6559,7 +6559,7 @@ GameObject:
   - component: {fileID: 95000012774101819}
   - component: {fileID: 95000012774101820}
   m_Layer: 20
-  m_Name: Player
+  m_Name: PLAYER
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7615,7 +7615,8 @@ MonoBehaviour:
       bootsLeft: {fileID: 212000013014849410}
       bootsRight: {fileID: 212000012846369294}
     weapon:
-      weapon: {fileID: 212000011968473432}
+      weaponL: {fileID: 212000011968473432}
+      weaponR: {fileID: 212000012541780312}
 --- !u!212 &212000009897770112
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -78,7 +78,8 @@ public class Gloves
 [Serializable]
 public class Weapon
 {
-    public SpriteRenderer weapon;
+    public SpriteRenderer weaponL;
+    public SpriteRenderer weaponR;
 }
 
 
