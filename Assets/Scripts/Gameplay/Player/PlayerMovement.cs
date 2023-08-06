@@ -16,12 +16,15 @@ namespace BGS.Player
         private Vector3 direction;
         //SpriteRenderer spriterender;
 
+        private PlayerAnim playerAnim;
+
         private float scale;
         //private Animator animator;
         // Start is called before the first frame update
         void Start()
         {
             scale = gameObject.transform.localScale.x;
+            playerAnim = gameObject.GetComponent<PlayerAnim>();
             //spriterender = GetComponent<SpriteRenderer>();
         }
 
@@ -56,14 +59,11 @@ namespace BGS.Player
             {
                 if (direction.magnitude > 0)
                 {
-                    animator.SetBool("isRunning", true);
-
-                    animator.SetFloat("Horizontal", direction.x);
-                    animator.SetFloat("Vertical", direction.y);
+                    playerAnim.SelectAnimation(1);
                 }
                 else
                 {
-                    animator.SetBool("isRunning", false);
+                    playerAnim.SelectAnimation(0);
                 }
             }
         }
