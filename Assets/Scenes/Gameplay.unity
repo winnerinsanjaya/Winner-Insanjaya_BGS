@@ -6557,6 +6557,7 @@ GameObject:
   - component: {fileID: 402526330}
   - component: {fileID: 402526333}
   - component: {fileID: 95000012774101819}
+  - component: {fileID: 95000012774101820}
   m_Layer: 20
   m_Name: Player
   m_TagString: Player
@@ -7578,6 +7579,43 @@ MonoBehaviour:
   animator: {fileID: 95000012774101818}
   animationLayer: 0
   states: []
+--- !u!114 &95000012774101820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000010434722598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45d214a874125354d946557da963fd61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAccStruct:
+    face:
+      face: {fileID: 212000011328992666}
+    head:
+      head: {fileID: 212000009968255726}
+    headAcc:
+      headAcc: {fileID: 212000013209625140}
+    top:
+      bodyUp: {fileID: 212000009897770112}
+      shoulderLeft: {fileID: 212000014149390730}
+      shoulderRight: {fileID: 212000013977875248}
+    gloves:
+      leftWrist: {fileID: 212000012186298492}
+      rightWrist: {fileID: 212000013942865138}
+      leftElbow: {fileID: 212000013083389678}
+      rightElbow: {fileID: 212000012305119560}
+    bottom:
+      pelvis: {fileID: 212000011853247854}
+      legLeft: {fileID: 212000013678358964}
+      legRight: {fileID: 212000014099437642}
+    boots:
+      bootsLeft: {fileID: 212000013014849410}
+      bootsRight: {fileID: 212000012846369294}
+    weapon:
+      weapon: {fileID: 212000011968473432}
 --- !u!212 &212000009897770112
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8032,8 +8070,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1869315837
+  m_SortingLayer: 1
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: ed569bcf23ebe674180d6ae7a5d29495, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
