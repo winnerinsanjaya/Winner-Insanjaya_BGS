@@ -7,21 +7,21 @@ using System;
 [Serializable]
 public class PlayerAccSpriteStruct
 {
-    public FaceSprite faceSprite;
+    public List<FaceSprite> faceSprite;
 
-    public HeadSprite headSprite;
+    public List<HeadSprite> headSprite;
 
-    public HeadAccSprite headAccSprite;
+    public List<HeadAccSprite> headAccSprite;
 
-    public TopSprite topSprite;
+    public List<TopSprite> topSprite;
 
-    public GlovesSprite glovesSprite;
+    public List<GlovesSprite> glovesSprite;
 
-    public BottomSprite bottomSprite;
+    public List<BottomSprite> bottomSprite;
 
-    public BootsSprite bootsSprite;
+    public List<BootsSprite> bootsSprite;
 
-    public WeaponSprite weaponSprite;
+    public List<WeaponSprite> weaponSprite;
 }
 
 [Serializable]
