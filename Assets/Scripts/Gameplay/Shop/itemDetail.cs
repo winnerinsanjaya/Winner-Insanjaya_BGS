@@ -22,6 +22,7 @@ namespace BGS.Shop
         public Button buyItem;
         public Button sellItem;
         public Button equipItem;
+        public Button previewItem;
 
         private int itemIndex;
 
@@ -50,6 +51,7 @@ namespace BGS.Shop
             buyItem.onClick.AddListener(delegate { OnBuyItem(_isOwned); });
             sellItem.onClick.AddListener(delegate { OnSellItem(_isOwned); });
             equipItem.onClick.AddListener( OnEquipItem);
+            previewItem.onClick.AddListener( OnPreviewItem);
         }
 
         private void OnBuyItem(bool _isOwned)
@@ -227,6 +229,86 @@ namespace BGS.Shop
         {
             PlayerAcc.instance.playerAccStruct.weapon.weaponL.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
             PlayerAcc.instance.playerAccStruct.weapon.weaponR.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
+        }
+        private void OnPreviewItem()
+        {
+            switch (itemIndex)
+            {
+                case 8:
+                    PreviewWeapon();
+                    break;
+                case 7:
+                    PreviewBoots();
+                    break;
+                case 6:
+                    PreviewBottom();
+                    break;
+                case 5:
+                    PreviewGloves();
+                    break;
+                case 4:
+                    PreviewTop();
+                    break;
+                case 3:
+                    PreviewHeadAcc();
+                    break;
+                case 2:
+                    PreviewHead();
+                    break;
+                case 1:
+                    PreviewFace();
+                    break;
+                default:
+                    print("Incorrect intelligence level.");
+                    break;
+            }
+        }
+
+        private void PreviewFace()
+        {
+            PlayerAccCam.instance.playerAccStruct.face.face.sprite = ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].face;
+        }
+
+        private void PreviewHead()
+        {
+            PlayerAccCam.instance.playerAccStruct.head.head.sprite = ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].head;
+        }
+        private void PreviewHeadAcc()
+        {
+            PlayerAccCam.instance.playerAccStruct.headAcc.headAcc.sprite = ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].headAcc;
+        }
+        
+        private void PreviewTop()
+        {
+            PlayerAccCam.instance.playerAccStruct.top.bodyUp.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].bodyUp;
+            PlayerAccCam.instance.playerAccStruct.top.shoulderLeft.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].shoulderLeft;
+            PlayerAccCam.instance.playerAccStruct.top.shoulderRight.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].shoulderRight;
+        }
+        private void PreviewGloves()
+        {
+            PlayerAccCam.instance.playerAccStruct.gloves.leftElbow.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftElbow;
+            PlayerAccCam.instance.playerAccStruct.gloves.rightElbow.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].rightElbow;
+            PlayerAccCam.instance.playerAccStruct.gloves.leftWrist.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftWrist;
+            PlayerAccCam.instance.playerAccStruct.gloves.rightWrist.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].rightWrist;
+        }
+
+        private void PreviewBottom()
+        {
+            PlayerAccCam.instance.playerAccStruct.bottom.pelvis.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].pelvis;
+            PlayerAccCam.instance.playerAccStruct.bottom.legLeft.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].legLeft;
+            PlayerAccCam.instance.playerAccStruct.bottom.legRight.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].legRight;
+        }
+
+        private void PreviewBoots()
+        {
+            PlayerAccCam.instance.playerAccStruct.boots.bootsLeft.sprite = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsLeft;
+            PlayerAccCam.instance.playerAccStruct.boots.bootsRight.sprite = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsRight;
+        }
+
+        private void PreviewWeapon()
+        {
+            PlayerAccCam.instance.playerAccStruct.weapon.weaponL.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
+            PlayerAccCam.instance.playerAccStruct.weapon.weaponR.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
         }
     }
 }

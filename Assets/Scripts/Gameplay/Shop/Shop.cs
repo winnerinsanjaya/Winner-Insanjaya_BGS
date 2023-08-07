@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using BGS.Player;
 
 namespace BGS.Shop {
     public class Shop : MonoBehaviour
     {
+        public static Shop instance;
+
         [SerializeField]
         private Transform shopItemContainer;
 
@@ -16,6 +19,11 @@ namespace BGS.Shop {
         private GameObject itemDetailContainer;
 
         private itemDetail _itemDetail;
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         private void Start()
         {
@@ -253,6 +261,7 @@ namespace BGS.Shop {
         private void OnClickItems( ShopItemData shopItemData, Sprite spr, int idx, int itemPos, Button btn)
         {
             itemDetailContainer.SetActive(true);
+            ResetPreview();
             _itemDetail.ChangeItemDetail(shopItemData, spr, idx, itemPos);
 
             if (shopItemData.isOwned)
@@ -277,12 +286,40 @@ namespace BGS.Shop {
 
         }
 
+        private void ResetPreview()
+        {
+            PlayerAccCam.instance.playerAccStruct.face.face.sprite = PlayerAcc.instance.playerAccStruct.face.face.sprite;
+            PlayerAccCam.instance.playerAccStruct.head.head.sprite = PlayerAcc.instance.playerAccStruct.head.head.sprite;
+            PlayerAccCam.instance.playerAccStruct.headAcc.headAcc.sprite = PlayerAcc.instance.playerAccStruct.headAcc.headAcc.sprite;
+            PlayerAccCam.instance.playerAccStruct.top.bodyUp.sprite = PlayerAcc.instance.playerAccStruct.top.bodyUp.sprite;
+            PlayerAccCam.instance.playerAccStruct.top.shoulderLeft.sprite = PlayerAcc.instance.playerAccStruct.top.shoulderLeft.sprite;
+            PlayerAccCam.instance.playerAccStruct.top.shoulderRight.sprite = PlayerAcc.instance.playerAccStruct.top.shoulderRight.sprite;
+            PlayerAccCam.instance.playerAccStruct.gloves.leftElbow.sprite = PlayerAcc.instance.playerAccStruct.gloves.leftElbow.sprite;
+            PlayerAccCam.instance.playerAccStruct.gloves.rightElbow.sprite = PlayerAcc.instance.playerAccStruct.gloves.rightElbow.sprite;
+            PlayerAccCam.instance.playerAccStruct.gloves.leftWrist.sprite = PlayerAcc.instance.playerAccStruct.gloves.leftWrist.sprite;
+            PlayerAccCam.instance.playerAccStruct.gloves.rightWrist.sprite = PlayerAcc.instance.playerAccStruct.gloves.rightWrist.sprite;
+            PlayerAccCam.instance.playerAccStruct.bottom.pelvis.sprite = PlayerAcc.instance.playerAccStruct.bottom.pelvis.sprite;
+            PlayerAccCam.instance.playerAccStruct.bottom.legLeft.sprite = PlayerAcc.instance.playerAccStruct.bottom.legLeft.sprite;
+            PlayerAccCam.instance.playerAccStruct.bottom.legRight.sprite = PlayerAcc.instance.playerAccStruct.bottom.legRight.sprite;
+            PlayerAccCam.instance.playerAccStruct.boots.bootsLeft.sprite = PlayerAcc.instance.playerAccStruct.boots.bootsLeft.sprite;
+            PlayerAccCam.instance.playerAccStruct.boots.bootsRight.sprite = PlayerAcc.instance.playerAccStruct.boots.bootsRight.sprite;
+            PlayerAccCam.instance.playerAccStruct.weapon.weaponL.sprite = PlayerAcc.instance.playerAccStruct.weapon.weaponL.sprite;
+            PlayerAccCam.instance.playerAccStruct.weapon.weaponR.sprite = PlayerAcc.instance.playerAccStruct.weapon.weaponR.sprite;
+
+        }
         private void ClearItem()
         {
             foreach (Transform child in shopItemContainer)
             {
                 Destroy(child.gameObject);
             }
+        }
+
+        public void ResetShop()
+        {
+            itemDetailContainer.SetActive(false);
+            ClearItem();
+            ResetPreview();
         }
 
     }

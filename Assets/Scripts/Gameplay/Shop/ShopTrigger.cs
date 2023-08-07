@@ -21,6 +21,7 @@ namespace BGS.Shop
         {
             if (collision.tag == "Player")
             {
+                Shop.instance.ResetShop();
                 shopCanvas.SetActive(false);
             }
         }
