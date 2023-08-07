@@ -76,7 +76,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
@@ -100,7 +100,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
@@ -124,7 +124,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
@@ -148,7 +148,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
@@ -172,7 +172,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
 
@@ -197,7 +197,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
@@ -221,7 +221,7 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
@@ -245,31 +245,35 @@ namespace BGS.Shop {
                 int n = i;
 
                 Button btn = item.GetComponent<Button>();
-                btn.onClick.AddListener(delegate { OnClickItems(data.price, data.isOwned, img.sprite, idx, n); });
+                btn.onClick.AddListener(delegate { OnClickItems(data, img.sprite, idx, n, btn); });
 
             }
         }
 
-        private void OnClickItems(float price,bool isOwned, Sprite spr, int idx, int itemPos)
+        private void OnClickItems( ShopItemData shopItemData, Sprite spr, int idx, int itemPos, Button btn)
         {
             itemDetailContainer.SetActive(true);
-            _itemDetail.ChangeItemDetail(spr, price, isOwned, idx, itemPos);
+            _itemDetail.ChangeItemDetail(shopItemData, spr, idx, itemPos);
 
-            if (isOwned)
+            if (shopItemData.isOwned)
             {
                 _itemDetail.equipItem.interactable = true;
                 _itemDetail.buyItem.interactable = false;
                 _itemDetail.sellItem.interactable = true;
             }
             
-            if (!isOwned)
+            if (!shopItemData.isOwned)
             {
                 _itemDetail.equipItem.interactable = false;
                 _itemDetail.buyItem.interactable = true;
                 _itemDetail.sellItem.interactable = false;
             }
 
-            _itemDetail.SetButton(isOwned);
+            _itemDetail.SetButton(shopItemData.isOwned);
+
+            btn.onClick.RemoveAllListeners();
+            btn.onClick.AddListener(delegate { OnClickItems(shopItemData, spr, idx, itemPos, btn); });
+
 
         }
 
