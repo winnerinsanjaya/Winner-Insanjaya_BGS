@@ -54,7 +54,7 @@ MonoBehaviour:
   - headAcc: {fileID: 21300000, guid: dcb72940063c94f44abc2366768e713a, type: 3}
     priceOwned:
       price: 30
-      isOwned: 0
+      isOwned: 1
   - headAcc: {fileID: 21300000, guid: 20eb058aea3c3a744bb5d47a1610550a, type: 3}
     priceOwned:
       price: 40
@@ -62,7 +62,7 @@ MonoBehaviour:
   - headAcc: {fileID: 21300000, guid: 04f6c40e52535b941b42e11550f9cb8c, type: 3}
     priceOwned:
       price: 50
-      isOwned: 0
+      isOwned: 1
   topSprite:
   - bodyUp: {fileID: 21300000, guid: 215dd6c48c732d744aecd29e7fecbbfa, type: 3}
     shoulderLeft: {fileID: 21300000, guid: aa3c97470a4d5234ea50591a35ff9616, type: 3}
@@ -148,7 +148,7 @@ MonoBehaviour:
     legRight: {fileID: 21300000, guid: 321cb2880c53eb743987a6a94741e4f0, type: 3}
     priceOwned:
       price: 10
-      isOwned: 0
+      isOwned: 1
   - pelvis: {fileID: 21300000, guid: 0c6412d95175c2b40bd9a27f7d1fa096, type: 3}
     legLeft: {fileID: 21300000, guid: 5cb065829e2f3084cb4dd46e0f41fb30, type: 3}
     legRight: {fileID: 21300000, guid: 3cf87d879b214174ea666233f56d905e, type: 3}
