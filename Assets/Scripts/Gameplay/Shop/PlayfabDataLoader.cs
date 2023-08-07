@@ -21,7 +21,7 @@ public class PlayfabDataLoader : MonoBehaviour
     {
         Debug.Log("PUSHED");
         ShopItem.instance.playerAccSpriteStructOwned = PlayfabDatabase.instance.playerAccSpriteStructOwned;
-        SetDataToScriptableObject();
+        //SetDataToScriptableObject();
 
         ShopItem.instance.playerAccEquip = PlayfabDatabase.instance.playerAccEquip;
         EquipLastItem();
