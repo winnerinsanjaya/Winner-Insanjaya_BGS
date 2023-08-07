@@ -6,6 +6,10 @@ using PlayFab.ClientModels;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
+using UnityEngine.Events;
+
+using BGS.Shop;
 
 public class PlayfabManager : MonoBehaviour
 {
@@ -14,6 +18,7 @@ public class PlayfabManager : MonoBehaviour
     [SerializeField]
     private string nextScene;
 
+    public static UnityAction OnLogin;
 
     #region Login
     [SerializeField]
@@ -48,6 +53,7 @@ public class PlayfabManager : MonoBehaviour
     {
         SetLoginState();
     }
+
 
 
 
@@ -188,15 +194,16 @@ public class PlayfabManager : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         string email = result.SessionTicket;
-        //PlayfabManager.instance.playfabId = result.PlayFabId;
+        PlayfabDatabase.instance.playfabId = result.PlayFabId;
         //PlayfabManager.instance.userData.Username = result.InfoResultPayload.PlayerProfile.DisplayName;
+        OnLogin?.Invoke();
         StartCoroutine(OnLoginSuccess_Coroutine());
         StartCoroutine(OnSuccess("Loggin In!"));
     }
 
     IEnumerator OnLoginSuccess_Coroutine()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene(nextScene);
     }
 

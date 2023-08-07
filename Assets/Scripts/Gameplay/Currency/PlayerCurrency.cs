@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using PlayFab;
 
 namespace BGS.Currency
 {
@@ -26,17 +27,24 @@ namespace BGS.Currency
             UpdateMoneyUI();
         }
 
+        public void SetMoney(int amt)
+        {
+            playerMoney = amt;
+            UpdateMoneyUI();
+        }
 
         public void DecreaseMoney(int amt)
         {
             playerMoney -= amt;
             UpdateMoneyUI();
+            UpdateMoneyPlayfab();
         }
 
         public void IncreaseMoney(int amt)
         {
             playerMoney += amt;
             UpdateMoneyUI();
+            UpdateMoneyPlayfab();
         }
 
         public int CheckMoney()
@@ -48,6 +56,19 @@ namespace BGS.Currency
         private void UpdateMoneyUI()
         {
             moneyText.text = "Money = " + playerMoney;
+        }
+
+        private void UpdateMoneyPlayfab()
+        {
+            if (PlayFabClientAPI.IsClientLoggedIn())
+            {
+                if (PlayfabDatabase.instance == null)
+                {
+                    return;
+                }
+                PlayfabDatabase.instance.playerMoney = playerMoney;
+                PlayfabDatabase.instance.SetMoneyData();
+            }
         }
     }
 }

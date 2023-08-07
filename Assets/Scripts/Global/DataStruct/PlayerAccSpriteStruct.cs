@@ -45,6 +45,26 @@ public class PlayerAccSpriteStructOwned
 }
 
 [Serializable]
+public class PlayerAccEquip
+{
+    public int faceSprite;
+
+    public int headSprite;
+
+    public int headAccSprite;
+
+    public int topSprite;
+
+    public int glovesSprite;
+
+    public int bottomSprite;
+
+    public int bootsSprite;
+
+    public int weaponSprite;
+}
+
+[Serializable]
 public class FaceSprite
 {
     public Sprite face;

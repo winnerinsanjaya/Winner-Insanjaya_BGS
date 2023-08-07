@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using BGS.Player;
 using BGS.Currency;
+using PlayFab;
 
 
 namespace BGS.Shop
@@ -66,7 +67,7 @@ namespace BGS.Shop
                 sellItem.interactable = true;
                 equipItem.interactable = true;
                 _shopItemData.isOwned = true;
-                SetBoughtItem();
+                ItemBuy.instance.OnBuyItem(itemIndex, itemPosition);
 
                 return;
             }
@@ -77,83 +78,6 @@ namespace BGS.Shop
             }
             
         }
-
-        private void SetBoughtItem()
-        {
-            switch (itemIndex)
-            {
-                case 8:
-                    BuyWeapon();
-                    break;
-                case 7:
-                    BuyBoots();
-                    break;
-                case 6:
-                    BuyBottom();
-                    break;
-                case 5:
-                    BuyGloves();
-                    break;
-                case 4:
-                    BuyTop();
-                    break;
-                case 3:
-                    BuyHeadAcc();
-                    break;
-                case 2:
-                    BuyHead();
-                    break;
-                case 1:
-                    BuyFace();
-                    break;
-                default:
-                    print("Incorrect intelligence level.");
-                    break;
-            }
-        }
-
-        private void BuyFace()
-        {
-            ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.faceSprite[itemPosition].isOwned = true;
-        }
-        private void BuyHead()
-        {
-            ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.headSprite[itemPosition].isOwned = true;
-        }
-        private void BuyHeadAcc()
-        {
-            ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.headAccSprite[itemPosition].isOwned = true;
-        }
-        private void BuyTop()
-        {
-            ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.topSprite[itemPosition].isOwned = true;
-        }
-        private void BuyGloves()
-        {
-            ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.glovesSprite[itemPosition].isOwned = true;
-        }
-        private void BuyBottom()
-        {
-            ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.bottomSprite[itemPosition].isOwned = true;
-        }
-        private void BuyBoots()
-        {
-            ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.bootsSprite[itemPosition].isOwned = true;
-        }
-        private void BuyWeapon()
-        {
-            ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].priceOwned.isOwned = true;
-            ShopItem.instance.playerAccSpriteStructOwned.weaponSprite[itemPosition].isOwned = true;
-
-        }
-
         private void OnSellItem()
         {
             PlayerCurrency.instance.IncreaseMoney(itemPrice);
@@ -161,301 +85,17 @@ namespace BGS.Shop
             sellItem.interactable = false;
             equipItem.interactable = false;
             _shopItemData.isOwned = false;
-            SetSoldItem();
-        }
-        private void SetSoldItem()
-        {
-            switch (itemIndex)
-            {
-                case 8:
-                    SellWeapon();
-                    break;
-                case 7:
-                    SellBoots();
-                    break;
-                case 6:
-                    SellBottom();
-                    break;
-                case 5:
-                    SellGloves();
-                    break;
-                case 4:
-                    SellTop();
-                    break;
-                case 3:
-                    SellHeadAcc();
-                    break;
-                case 2:
-                    SellHead();
-                    break;
-                case 1:
-                    SellFace();
-                    break;
-                default:
-                    print("Incorrect intelligence level.");
-                    break;
-            }
-        }
-
-        private void SellFace()
-        {
-            ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.faceSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].face;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.face.face.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-        private void SellHead()
-        {
-            ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.headSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].head;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.head.head.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-        private void SellHeadAcc()
-        {
-            ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.headAccSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].headAcc;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.headAcc.headAcc.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-        private void SellTop()
-        {
-            ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.topSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].bodyUp;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.top.bodyUp.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-        private void SellGloves()
-        {
-            ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.glovesSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftElbow;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.gloves.leftElbow.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-
-        }
-        private void SellBottom()
-        {
-            ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.bottomSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].pelvis;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.bottom.pelvis.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-        private void SellBoots()
-        {
-            ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.bootsSprite[itemPosition].isOwned = false;
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsLeft;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.boots.bootsLeft.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-        private void SellWeapon()
-        {
-            ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].priceOwned.isOwned = false;
-            ShopItem.instance.playerAccSpriteStructOwned.weaponSprite[itemPosition].isOwned = false;
-
-
-            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
-            Sprite spriteB = PlayerAcc.instance.playerAccStruct.weapon.weaponL.sprite;
-
-            CheckSpriteSell(spriteA, spriteB);
-        }
-
-        private void CheckSpriteSell(Sprite spriteA, Sprite spriteB)
-        {
-            if(spriteA == spriteB)
-            {
-                int _itemPos = itemPosition;
-
-                itemPosition = 0;
-
-                OnEquipItem();
-
-                OnBuyItem();
-
-                itemPosition = _itemPos;    
-            }
+            ItemSell.instance.OnSellItem(itemIndex, itemPosition);
         }
 
         private void OnEquipItem()
         {
-            switch (itemIndex)
-            {
-                case 8:
-                    EquipWeapon();
-                    break;
-                case 7:
-                    EquipBoots();
-                    break;
-                case 6:
-                    EquipBottom();
-                    break;
-                case 5:
-                    EquipGloves();
-                    break;
-                case 4:
-                    EquipTop();
-                    break;
-                case 3:
-                    EquipHeadAcc();
-                    break;
-                case 2:
-                    EquipHead();
-                    break;
-                case 1:
-                    EquipFace();
-                    break;
-                default:
-                    print("Incorrect intelligence level.");
-                    break;
-            }
-            OnPreviewItem();
+            ItemEquip.instance.OnEquipItem(itemIndex, itemPosition);
         }
 
-        private void EquipFace()
-        {
-            PlayerAcc.instance.playerAccStruct.face.face.sprite = ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].face;
-        }
-
-        private void EquipHead()
-        {
-            PlayerAcc.instance.playerAccStruct.head.head.sprite = ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].head;
-        }
-        private void EquipHeadAcc()
-        {
-            PlayerAcc.instance.playerAccStruct.headAcc.headAcc.sprite = ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].headAcc;
-        }
-        
-        private void EquipTop()
-        {
-            PlayerAcc.instance.playerAccStruct.top.bodyUp.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].bodyUp;
-            PlayerAcc.instance.playerAccStruct.top.shoulderLeft.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].shoulderLeft;
-            PlayerAcc.instance.playerAccStruct.top.shoulderRight.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].shoulderRight;
-        }
-        private void EquipGloves()
-        {
-            PlayerAcc.instance.playerAccStruct.gloves.leftElbow.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftElbow;
-            PlayerAcc.instance.playerAccStruct.gloves.rightElbow.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].rightElbow;
-            PlayerAcc.instance.playerAccStruct.gloves.leftWrist.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftWrist;
-            PlayerAcc.instance.playerAccStruct.gloves.rightWrist.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].rightWrist;
-        }
-
-        private void EquipBottom()
-        {
-            PlayerAcc.instance.playerAccStruct.bottom.pelvis.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].pelvis;
-            PlayerAcc.instance.playerAccStruct.bottom.legLeft.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].legLeft;
-            PlayerAcc.instance.playerAccStruct.bottom.legRight.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].legRight;
-        }
-
-        private void EquipBoots()
-        {
-            PlayerAcc.instance.playerAccStruct.boots.bootsLeft.sprite = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsLeft;
-            PlayerAcc.instance.playerAccStruct.boots.bootsRight.sprite = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsRight;
-        }
-
-        private void EquipWeapon()
-        {
-            PlayerAcc.instance.playerAccStruct.weapon.weaponL.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
-            PlayerAcc.instance.playerAccStruct.weapon.weaponR.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
-        }
         private void OnPreviewItem()
         {
-            switch (itemIndex)
-            {
-                case 8:
-                    PreviewWeapon();
-                    break;
-                case 7:
-                    PreviewBoots();
-                    break;
-                case 6:
-                    PreviewBottom();
-                    break;
-                case 5:
-                    PreviewGloves();
-                    break;
-                case 4:
-                    PreviewTop();
-                    break;
-                case 3:
-                    PreviewHeadAcc();
-                    break;
-                case 2:
-                    PreviewHead();
-                    break;
-                case 1:
-                    PreviewFace();
-                    break;
-                default:
-                    print("Incorrect intelligence level.");
-                    break;
-            }
-        }
-
-        private void PreviewFace()
-        {
-            PlayerAccCam.instance.playerAccStruct.face.face.sprite = ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].face;
-        }
-
-        private void PreviewHead()
-        {
-            PlayerAccCam.instance.playerAccStruct.head.head.sprite = ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].head;
-        }
-        private void PreviewHeadAcc()
-        {
-            PlayerAccCam.instance.playerAccStruct.headAcc.headAcc.sprite = ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].headAcc;
-        }
-        
-        private void PreviewTop()
-        {
-            PlayerAccCam.instance.playerAccStruct.top.bodyUp.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].bodyUp;
-            PlayerAccCam.instance.playerAccStruct.top.shoulderLeft.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].shoulderLeft;
-            PlayerAccCam.instance.playerAccStruct.top.shoulderRight.sprite = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].shoulderRight;
-        }
-        private void PreviewGloves()
-        {
-            PlayerAccCam.instance.playerAccStruct.gloves.leftElbow.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftElbow;
-            PlayerAccCam.instance.playerAccStruct.gloves.rightElbow.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].rightElbow;
-            PlayerAccCam.instance.playerAccStruct.gloves.leftWrist.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftWrist;
-            PlayerAccCam.instance.playerAccStruct.gloves.rightWrist.sprite = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].rightWrist;
-        }
-
-        private void PreviewBottom()
-        {
-            PlayerAccCam.instance.playerAccStruct.bottom.pelvis.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].pelvis;
-            PlayerAccCam.instance.playerAccStruct.bottom.legLeft.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].legLeft;
-            PlayerAccCam.instance.playerAccStruct.bottom.legRight.sprite = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].legRight;
-        }
-
-        private void PreviewBoots()
-        {
-            PlayerAccCam.instance.playerAccStruct.boots.bootsLeft.sprite = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsLeft;
-            PlayerAccCam.instance.playerAccStruct.boots.bootsRight.sprite = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsRight;
-        }
-
-        private void PreviewWeapon()
-        {
-            PlayerAccCam.instance.playerAccStruct.weapon.weaponL.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
-            PlayerAccCam.instance.playerAccStruct.weapon.weaponR.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
+            ItemEquip.instance.OnPreviewItem(itemIndex, itemPosition);
         }
     }
 }

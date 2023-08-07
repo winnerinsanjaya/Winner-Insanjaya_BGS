@@ -12,6 +12,7 @@ namespace BGS.Shop
         public PlayerAccList playerAccList;
         public PlayerAccSpriteStruct playerAccSpriteStruct;
         public PlayerAccSpriteStructOwned playerAccSpriteStructOwned;
+        public PlayerAccEquip playerAccEquip;
 
 
         private void Awake()

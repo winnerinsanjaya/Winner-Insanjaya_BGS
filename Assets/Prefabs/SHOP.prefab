@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3539638806834475075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3539638806834475072}
+  - component: {fileID: 3539638806834475073}
+  - component: {fileID: 3539638807461603097}
+  - component: {fileID: 3539638807461603096}
+  - component: {fileID: 2530687700766058575}
+  m_Layer: 0
+  m_Name: SHOP
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3539638806834475072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539638806834475075}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.64509, y: 22.98911, z: 0.062059395}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3539638806834475073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539638806834475075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bad994a6611394549881be0818012e8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAccList: {fileID: 11400000, guid: 89a9a3bebbbd64845bcbcbcfe92d2241, type: 2}
+  playerAccSpriteStruct:
+    faceSprite: []
+    headSprite: []
+    headAccSprite: []
+    topSprite: []
+    glovesSprite: []
+    bottomSprite: []
+    bootsSprite: []
+    weaponSprite: []
+  playerAccSpriteStructOwned:
+    faceSprite: []
+    headSprite: []
+    headAccSprite: []
+    topSprite: []
+    glovesSprite: []
+    bottomSprite: []
+    bootsSprite: []
+    weaponSprite: []
+  playerAccEquip:
+    faceSprite: 0
+    headSprite: 0
+    headAccSprite: 0
+    topSprite: 0
+    glovesSprite: 0
+    bottomSprite: 0
+    bootsSprite: 0
+    weaponSprite: 0
+--- !u!114 &3539638807461603097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539638806834475075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8483038a505267d4cba599e80a4d3217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3539638807461603096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539638806834475075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e15953afc1bbba40b00323471aa1b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2530687700766058575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539638806834475075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157b9d0193b1851499d52994067b0517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

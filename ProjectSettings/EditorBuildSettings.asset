@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoginPage/LoginPage.unity
+    path: Assets/Scenes/LoginPage.unity
     guid: 8f16e551eaef11645947b8a94177ea54
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
