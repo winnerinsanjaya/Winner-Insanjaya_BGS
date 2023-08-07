@@ -20,6 +20,9 @@ namespace BGS.Shop {
 
         private itemDetail _itemDetail;
 
+        [SerializeField]
+        private GameObject shopCanvas;
+
         private void Awake()
         {
             instance = this;
@@ -321,6 +324,23 @@ namespace BGS.Shop {
             itemDetailContainer.SetActive(false);
             ClearItem();
             ResetPreview();
+        }
+
+        public void SetShopping(bool isShopping)
+        {
+            if (isShopping)
+            {
+                Time.timeScale = 0;
+                return;
+            }
+
+            if (!isShopping)
+            {
+                ResetShop();
+                shopCanvas.SetActive(false);
+                Time.timeScale = 1;
+                return;
+            }
         }
 
     }

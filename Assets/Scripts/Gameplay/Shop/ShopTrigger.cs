@@ -14,6 +14,7 @@ namespace BGS.Shop
             if (collision.tag == "Player")
             {
                 shopCanvas.SetActive(true);
+                Shop.instance.SetShopping(true);
             }
         }
 
