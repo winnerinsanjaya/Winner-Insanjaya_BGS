@@ -2244,7 +2244,7 @@ GameObject:
   - component: {fileID: 126246770}
   - component: {fileID: 126246772}
   - component: {fileID: 126246771}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4104,7 +4104,7 @@ GameObject:
   - component: {fileID: 348283140}
   - component: {fileID: 348283139}
   - component: {fileID: 348283138}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7316,7 +7316,7 @@ GameObject:
   - component: {fileID: 602706389}
   - component: {fileID: 602706388}
   - component: {fileID: 602706387}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: yesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9400,7 +9400,7 @@ GameObject:
   - component: {fileID: 868361734}
   - component: {fileID: 868361733}
   - component: {fileID: 868361732}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: Close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9521,7 +9521,7 @@ GameObject:
   - component: {fileID: 873729207}
   - component: {fileID: 873729206}
   - component: {fileID: 873729205}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11222,7 +11222,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 7340032
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 9ccac77c475afd14ab3296179af430a0, type: 2}
   m_TargetDisplay: 0
@@ -12596,7 +12596,7 @@ GameObject:
   - component: {fileID: 1227184955}
   - component: {fileID: 1227184957}
   - component: {fileID: 1227184956}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16047,7 +16047,7 @@ GameObject:
   - component: {fileID: 1743208761}
   - component: {fileID: 1743208760}
   - component: {fileID: 1743208759}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17435,7 +17435,7 @@ GameObject:
   - component: {fileID: 1879015102}
   - component: {fileID: 1879015104}
   - component: {fileID: 1879015103}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18170,7 +18170,7 @@ GameObject:
   - component: {fileID: 1988938881}
   - component: {fileID: 1988938880}
   - component: {fileID: 1988938879}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: yesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18413,7 +18413,7 @@ GameObject:
   - component: {fileID: 2006488224}
   - component: {fileID: 2006488226}
   - component: {fileID: 2006488225}
-  m_Layer: 22
+  m_Layer: 24
   m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
