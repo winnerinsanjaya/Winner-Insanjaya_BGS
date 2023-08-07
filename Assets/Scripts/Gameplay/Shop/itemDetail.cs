@@ -201,42 +201,99 @@ namespace BGS.Shop
         {
             ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.faceSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].face;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.face.face.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
         }
         private void SellHead()
         {
             ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.headSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].head;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.head.head.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
         }
         private void SellHeadAcc()
         {
             ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.headAccSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].headAcc;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.headAcc.headAcc.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
         }
         private void SellTop()
         {
             ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.topSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].bodyUp;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.top.bodyUp.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
         }
         private void SellGloves()
         {
             ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.glovesSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].leftElbow;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.gloves.leftElbow.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
+
         }
         private void SellBottom()
         {
             ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.bottomSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].pelvis;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.bottom.pelvis.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
         }
         private void SellBoots()
         {
             ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.bootsSprite[itemPosition].isOwned = false;
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].bootsLeft;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.boots.bootsLeft.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
         }
         private void SellWeapon()
         {
             ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].priceOwned.isOwned = false;
             ShopItem.instance.playerAccSpriteStructOwned.weaponSprite[itemPosition].isOwned = false;
 
+
+            Sprite spriteA = ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].weapon;
+            Sprite spriteB = PlayerAcc.instance.playerAccStruct.weapon.weaponL.sprite;
+
+            CheckSpriteSell(spriteA, spriteB);
+        }
+
+        private void CheckSpriteSell(Sprite spriteA, Sprite spriteB)
+        {
+            if(spriteA == spriteB)
+            {
+                int _itemPos = itemPosition;
+
+                itemPosition = 0;
+
+                OnEquipItem();
+
+                OnBuyItem();
+
+                itemPosition = _itemPos;    
+            }
         }
 
         private void OnEquipItem()
@@ -271,6 +328,7 @@ namespace BGS.Shop
                     print("Incorrect intelligence level.");
                     break;
             }
+            OnPreviewItem();
         }
 
         private void EquipFace()
