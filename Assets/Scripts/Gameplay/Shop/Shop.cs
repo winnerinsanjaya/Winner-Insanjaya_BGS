@@ -330,6 +330,7 @@ namespace BGS.Shop {
         {
             if (isShopping)
             {
+                shopCanvas.SetActive(true);
                 Time.timeScale = 0;
                 return;
             }
