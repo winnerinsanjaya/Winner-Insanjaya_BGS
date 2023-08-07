@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue Without Login
+  m_Text: Continue Offline Mode
 --- !u!222 &58817551
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1358,6 +1358,15 @@ MonoBehaviour:
     bottomSprite: []
     bootsSprite: []
     weaponSprite: []
+  playerAccEquip:
+    faceSprite: 0
+    headSprite: 0
+    headAccSprite: 0
+    topSprite: 0
+    glovesSprite: 0
+    bottomSprite: 0
+    bootsSprite: 0
+    weaponSprite: 0
   playerMoney: 0
   playfabId: 
 --- !u!1 &2087115692
