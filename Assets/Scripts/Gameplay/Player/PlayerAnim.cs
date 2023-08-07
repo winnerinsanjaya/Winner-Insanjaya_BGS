@@ -13,6 +13,7 @@ namespace BGS.Player
         private int selectAnim;
 
         public Animator animator;
+        public Animator animatorFaceCam;
 
         public int animationLayer;
 
@@ -29,6 +30,7 @@ namespace BGS.Player
                 }
             }
             animator = animator.GetComponent<Animator>();
+            animatorFaceCam = animatorFaceCam.GetComponent<Animator>();
             SelectAnimation(selectAnim);
         }
 
@@ -43,6 +45,7 @@ namespace BGS.Player
                 return;
             selectAnim = index;
             animator.Play(states[index], animationLayer);
+            animatorFaceCam.Play(states[index], animationLayer);
         }
     }
 }

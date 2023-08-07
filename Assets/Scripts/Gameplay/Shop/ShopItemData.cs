@@ -8,7 +8,7 @@ namespace BGS.Shop
 {
     public class ShopItemData : MonoBehaviour
     {
-        public float price;
+        public int price;
         public bool isOwned;
         public Sprite sprite;
 

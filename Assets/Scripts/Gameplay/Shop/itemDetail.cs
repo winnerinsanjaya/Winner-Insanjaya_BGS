@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using BGS.Player;
+using BGS.Currency;
 
 
 namespace BGS.Shop
@@ -14,7 +15,7 @@ namespace BGS.Shop
         private Image itemImage;
 
         [SerializeField]
-        private float itemPrice;
+        private int itemPrice;
 
         [SerializeField]
         private Text textPrice;
@@ -48,21 +49,33 @@ namespace BGS.Shop
 
         public void SetButton(bool _isOwned)
         {
-            buyItem.onClick.AddListener(delegate { OnBuyItem(_isOwned); });
+            buyItem.onClick.AddListener(OnBuyItem);
             sellItem.onClick.AddListener(delegate { OnSellItem(_isOwned); });
             equipItem.onClick.AddListener( OnEquipItem);
             previewItem.onClick.AddListener( OnPreviewItem);
         }
 
-        private void OnBuyItem(bool _isOwned)
+        private void OnBuyItem()
         {
-            //mechanic minus
-            _isOwned = true;
-            buyItem.interactable = false;
-            sellItem.interactable = true;
-            equipItem.interactable = true;
-            _shopItemData.isOwned = true;
-            SetBoughtItem();
+            int money = PlayerCurrency.instance.CheckMoney();
+
+            if(money >= itemPrice)
+            {
+                PlayerCurrency.instance.DecreaseMoney(itemPrice);
+                buyItem.interactable = false;
+                sellItem.interactable = true;
+                equipItem.interactable = true;
+                _shopItemData.isOwned = true;
+                SetBoughtItem();
+
+                return;
+            }
+            
+            if(money < itemPrice)
+            {
+                Debug.Log("NotEnouigh");
+            }
+            
         }
 
         private void SetBoughtItem()

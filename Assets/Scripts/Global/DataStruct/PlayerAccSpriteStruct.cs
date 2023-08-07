@@ -112,7 +112,7 @@ public class WeaponSprite
 [Serializable]
 public class PriceOwned
 {
-    public float price;
+    public int price;
     public bool isOwned;
 }
 

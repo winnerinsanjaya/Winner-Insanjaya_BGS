@@ -309,6 +309,7 @@ namespace BGS.Shop {
         }
         private void ClearItem()
         {
+            itemDetailContainer.SetActive(false);
             foreach (Transform child in shopItemContainer)
             {
                 Destroy(child.gameObject);
