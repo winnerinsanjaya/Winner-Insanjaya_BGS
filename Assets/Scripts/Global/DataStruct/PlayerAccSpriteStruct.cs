@@ -25,6 +25,26 @@ public class PlayerAccSpriteStruct
 }
 
 [Serializable]
+public class PlayerAccSpriteStructOwned
+{
+    public List<PriceOwned> faceSprite;
+
+    public List<PriceOwned> headSprite;
+
+    public List<PriceOwned> headAccSprite;
+
+    public List<PriceOwned> topSprite;
+
+    public List<PriceOwned> glovesSprite;
+
+    public List<PriceOwned> bottomSprite;
+
+    public List<PriceOwned> bootsSprite;
+
+    public List<PriceOwned> weaponSprite;
+}
+
+[Serializable]
 public class FaceSprite
 {
     public Sprite face;

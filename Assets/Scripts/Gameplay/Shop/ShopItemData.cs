@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 namespace BGS.Shop
@@ -9,5 +10,9 @@ namespace BGS.Shop
     {
         public float price;
         public bool isOwned;
+        public Sprite sprite;
+
     }
+
+    
 }
