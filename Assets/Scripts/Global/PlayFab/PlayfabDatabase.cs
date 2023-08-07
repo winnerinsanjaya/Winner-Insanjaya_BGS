@@ -15,9 +15,12 @@ public class PlayfabDatabase : MonoBehaviour
     public static UnityAction OnGetAccDataErrorEvent;
     public static UnityAction OnGetMoneyData;
     public static UnityAction OnGetMoneyErrorEvent;
+    public static UnityAction OnGetEquipData;
+    public static UnityAction OnGetEquipErrorEvent;
 
     [Header("GameData")]
     public PlayerAccSpriteStructOwned playerAccSpriteStructOwned = new PlayerAccSpriteStructOwned();
+    public PlayerAccEquip playerAccEquip = new PlayerAccEquip();
     public int playerMoney;
 
     public string playfabId;
@@ -42,12 +45,14 @@ public class PlayfabDatabase : MonoBehaviour
     {
         PlayfabManager.OnLogin += GetAccData;
         PlayfabManager.OnLogin += GetMoneyData;
+        PlayfabManager.OnLogin += GetEquipData;
     }
 
     private void OnDisable()
     {
         PlayfabManager.OnLogin -= GetAccData;
         PlayfabManager.OnLogin -= GetMoneyData;
+        PlayfabManager.OnLogin -= GetEquipData;
     }
 
     public void GetAccData()
@@ -165,5 +170,65 @@ public class PlayfabDatabase : MonoBehaviour
     {
         yield return new WaitForSeconds(0.7f);
         GetMoneyData();
+    }
+
+
+    public void GetEquipData()
+    {
+        var request = new GetUserDataRequest()
+        {
+            PlayFabId = this.playfabId,
+            Keys = null
+        };
+
+        PlayFabClientAPI.GetUserData(request, OnGetEquipDataSuccess, error => Debug.Log(error));
+    }
+
+    private void OnGetEquipDataSuccess(GetUserDataResult result)
+    {
+        if (result.Data.ContainsKey("PlayerAccEquip"))
+        {
+            PlayerAccEquip data = JsonConvert.DeserializeObject<PlayerAccEquip>(result.Data["PlayerAccEquip"].Value);
+            playerAccEquip = data;
+        }
+        else
+        {
+            //var userRequest = JsonUtility.ToJson(ShopItem.instance.playerAccSpriteStructOwned);
+
+
+
+            playerAccEquip = ShopItem.instance.playerAccEquip;
+
+            SetEquipData();
+        }
+
+        OnGetEquipData?.Invoke();
+    }
+
+    public void SetEquipData()
+    {
+        var request = new UpdateUserDataRequest()
+        {
+            Data = new Dictionary<string, string>()
+                {
+                    {"PlayerAccEquip", JsonConvert.SerializeObject(playerAccEquip)}
+                }
+        };
+        PlayFabClientAPI.UpdateUserData(request, OnSetEquipDataSuccess, OnGetEquipDataError);
+    }
+
+    private void OnGetEquipDataError(PlayFabError obj)
+    {
+        OnGetEquipErrorEvent?.Invoke();
+    }
+    private void OnSetEquipDataSuccess(UpdateUserDataResult obj)
+    {
+        StartCoroutine(GetEquipData_Coroutine());
+    }
+
+    IEnumerator GetEquipData_Coroutine()
+    {
+        yield return new WaitForSeconds(0.7f);
+        GetEquipData();
     }
 }

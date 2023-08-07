@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using BGS.Player;
 using BGS.Currency;
+using PlayFab;
 
 namespace BGS.Shop
 {
@@ -48,6 +49,7 @@ namespace BGS.Shop
                     break;
             }
             OnPreviewItem(x,y);
+            UpdateToPlayFabs();
         }
 
         private void EquipFace(int y)
@@ -192,6 +194,21 @@ namespace BGS.Shop
         {
             PlayerAccCam.instance.playerAccStruct.weapon.weaponL.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[y].weapon;
             PlayerAccCam.instance.playerAccStruct.weapon.weaponR.sprite = ShopItem.instance.playerAccSpriteStruct.weaponSprite[y].weapon;
+        }
+
+
+        private void UpdateToPlayFabs()
+        {
+            if (PlayFabClientAPI.IsClientLoggedIn())
+            {
+                if (PlayfabDatabase.instance == null)
+                {
+                    return;
+                }
+
+                PlayfabDatabase.instance.playerAccEquip = ShopItem.instance.playerAccEquip;
+                PlayfabDatabase.instance.SetEquipData();
+            }
         }
     }
 }

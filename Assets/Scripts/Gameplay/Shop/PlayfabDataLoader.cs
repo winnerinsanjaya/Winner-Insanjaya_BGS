@@ -23,6 +23,9 @@ public class PlayfabDataLoader : MonoBehaviour
         ShopItem.instance.playerAccSpriteStructOwned = PlayfabDatabase.instance.playerAccSpriteStructOwned;
         SetDataToScriptableObject();
 
+        ShopItem.instance.playerAccEquip = PlayfabDatabase.instance.playerAccEquip;
+        EquipLastItem();
+
         PlayerCurrency.instance.SetMoney(PlayfabDatabase.instance.playerMoney);
     }
 
@@ -69,5 +72,15 @@ public class PlayfabDataLoader : MonoBehaviour
         }
     }
 
-
+    private void EquipLastItem()
+    {
+        ItemEquip.instance.OnEquipItem(1, ShopItem.instance.playerAccEquip.faceSprite);
+        ItemEquip.instance.OnEquipItem(2, ShopItem.instance.playerAccEquip.headSprite);
+        ItemEquip.instance.OnEquipItem(3, ShopItem.instance.playerAccEquip.headAccSprite);
+        ItemEquip.instance.OnEquipItem(4, ShopItem.instance.playerAccEquip.topSprite);
+        ItemEquip.instance.OnEquipItem(5, ShopItem.instance.playerAccEquip.glovesSprite);
+        ItemEquip.instance.OnEquipItem(6, ShopItem.instance.playerAccEquip.bottomSprite);
+        ItemEquip.instance.OnEquipItem(7, ShopItem.instance.playerAccEquip.bootsSprite);
+        ItemEquip.instance.OnEquipItem(8, ShopItem.instance.playerAccEquip.weaponSprite);
+    }
 }
