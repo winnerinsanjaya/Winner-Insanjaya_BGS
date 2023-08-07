@@ -50,7 +50,7 @@ namespace BGS.Shop
         public void SetButton(bool _isOwned)
         {
             buyItem.onClick.AddListener(OnBuyItem);
-            sellItem.onClick.AddListener(delegate { OnSellItem(_isOwned); });
+            sellItem.onClick.AddListener(OnSellItem);
             equipItem.onClick.AddListener( OnEquipItem);
             previewItem.onClick.AddListener( OnPreviewItem);
         }
@@ -154,13 +154,89 @@ namespace BGS.Shop
 
         }
 
-        private void OnSellItem(bool _isOwned)
+        private void OnSellItem()
         {
-            //mechanic plus
-            _isOwned = false;
+            PlayerCurrency.instance.IncreaseMoney(itemPrice);
             buyItem.interactable = true;
             sellItem.interactable = false;
             equipItem.interactable = false;
+            _shopItemData.isOwned = false;
+            SetSoldItem();
+        }
+        private void SetSoldItem()
+        {
+            switch (itemIndex)
+            {
+                case 8:
+                    SellWeapon();
+                    break;
+                case 7:
+                    SellBoots();
+                    break;
+                case 6:
+                    SellBottom();
+                    break;
+                case 5:
+                    SellGloves();
+                    break;
+                case 4:
+                    SellTop();
+                    break;
+                case 3:
+                    SellHeadAcc();
+                    break;
+                case 2:
+                    SellHead();
+                    break;
+                case 1:
+                    SellFace();
+                    break;
+                default:
+                    print("Incorrect intelligence level.");
+                    break;
+            }
+        }
+
+        private void SellFace()
+        {
+            ShopItem.instance.playerAccSpriteStruct.faceSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.faceSprite[itemPosition].isOwned = false;
+        }
+        private void SellHead()
+        {
+            ShopItem.instance.playerAccSpriteStruct.headSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.headSprite[itemPosition].isOwned = false;
+        }
+        private void SellHeadAcc()
+        {
+            ShopItem.instance.playerAccSpriteStruct.headAccSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.headAccSprite[itemPosition].isOwned = false;
+        }
+        private void SellTop()
+        {
+            ShopItem.instance.playerAccSpriteStruct.topSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.topSprite[itemPosition].isOwned = false;
+        }
+        private void SellGloves()
+        {
+            ShopItem.instance.playerAccSpriteStruct.glovesSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.glovesSprite[itemPosition].isOwned = false;
+        }
+        private void SellBottom()
+        {
+            ShopItem.instance.playerAccSpriteStruct.bottomSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.bottomSprite[itemPosition].isOwned = false;
+        }
+        private void SellBoots()
+        {
+            ShopItem.instance.playerAccSpriteStruct.bootsSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.bootsSprite[itemPosition].isOwned = false;
+        }
+        private void SellWeapon()
+        {
+            ShopItem.instance.playerAccSpriteStruct.weaponSprite[itemPosition].priceOwned.isOwned = false;
+            ShopItem.instance.playerAccSpriteStructOwned.weaponSprite[itemPosition].isOwned = false;
+
         }
 
         private void OnEquipItem()
