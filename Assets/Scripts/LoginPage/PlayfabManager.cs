@@ -195,7 +195,6 @@ public class PlayfabManager : MonoBehaviour
     {
         string email = result.SessionTicket;
         PlayfabDatabase.instance.playfabId = result.PlayFabId;
-        //PlayfabManager.instance.userData.Username = result.InfoResultPayload.PlayerProfile.DisplayName;
         OnLogin?.Invoke();
         StartCoroutine(OnLoginSuccess_Coroutine());
         StartCoroutine(OnSuccess("Loggin In!"));
@@ -234,9 +233,7 @@ public class PlayfabManager : MonoBehaviour
     {
         messageText.text = message;
         yield return new WaitForSeconds(0.2f);
-        //popupSuccessAlert.SetActive(true);
         yield return new WaitForSeconds(1.5f);
-        //popupSuccessAlert.SetActive(false);
         messageText.text = "";
     }
 
@@ -244,9 +241,7 @@ public class PlayfabManager : MonoBehaviour
     {
         messageText.text = message;
         yield return new WaitForSeconds(0.2f);
-        //popupErrorAlert.SetActive(true);
         yield return new WaitForSeconds(2f);
-        //popupErrorAlert.SetActive(false);
         messageText.text = "";
     }
 

@@ -75,10 +75,6 @@ public class PlayfabDatabase : MonoBehaviour
         }
         else
         {
-            //var userRequest = JsonUtility.ToJson(ShopItem.instance.playerAccSpriteStructOwned);
-
-
-
             playerAccSpriteStructOwned = ShopItem.instance.playerAccSpriteStructOwned;
 
             SetAccData();
@@ -193,10 +189,6 @@ public class PlayfabDatabase : MonoBehaviour
         }
         else
         {
-            //var userRequest = JsonUtility.ToJson(ShopItem.instance.playerAccSpriteStructOwned);
-
-
-
             playerAccEquip = ShopItem.instance.playerAccEquip;
 
             SetEquipData();
