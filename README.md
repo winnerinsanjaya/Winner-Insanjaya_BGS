@@ -11,8 +11,13 @@ Addition Features :
 
 -Cloud Data Storing (PlayFab)
 
--Save The Lastest Equiped Items (save in the cloud)
+-Save & Load The Lastest Equiped Items (save in the cloud)
 
+Move : WASD
+Interact : Mouse
+
+
+I forgot : forgot to destroy persistent asset when logout(DontDestroyOnLoad Asset) so if u want clear logout, just reasrt the appliaction)
 
 -----------------------------------------
 PDF Documentation
