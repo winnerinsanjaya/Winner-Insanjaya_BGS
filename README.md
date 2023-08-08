@@ -16,8 +16,8 @@ Addition Features :
 Move : WASD
 Interact : Mouse
 
-
-I forgot : forgot to destroy persistent asset when logout(DontDestroyOnLoad Asset) so if u want clear logout, just reasrt the appliaction)
+#NOTE
+I FORGOT : FORGOT TO DESTROY PERSISTENT ASSET WHEN LOGOUT(DONTDESTROYONLOAD ASSET) SO IF U WANT CLEAR LOGOUT, JUST RESTART THE APPLICATION)
 
 -----------------------------------------
 PDF Documentation
